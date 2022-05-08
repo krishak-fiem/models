@@ -13,6 +13,8 @@ github.com/hailocab/go-hostpool v0.0.0-20160125115350-e80d13ce29ed/go.mod h1:tMW
 github.com/kr/pretty v0.1.0/go.mod h1:dAy3ld7l9f0ibDNOQOHHMYYIIbhfbHSm3C4ZsoJORNo=
 github.com/kr/pty v1.1.1/go.mod h1:pFQYn66WHrOpPYNljwOMqo10TkYh1fy3cYio2l3bCsQ=
 github.com/kr/text v0.1.0/go.mod h1:4Jbv+DJW3UT/LiOwJeYQe1efqtUx/iVham/4vfdArNI=
+github.com/krishak-fiem/db v0.0.0-20220507193825-51d10aa923be h1:47DEQpj8HBSa+/TImW+5JCeuQeRkm5NMpJWZG3hSuFU=
+github.com/krishak-fiem/db v0.0.0-20220507193825-51d10aa923be/go.mod h1:/Xs+CDO5XAzM7wj94f6OEpDPkjz4G68R6Re5K3Sb5sE=
 github.com/krishak-fiem/db/go v0.0.0-20220507193825-51d10aa923be h1:Y/ngU71JvK+g9yde9hwyuHusJhuB6VjPNzTlp4fdPws=
 github.com/krishak-fiem/db/go v0.0.0-20220507193825-51d10aa923be/go.mod h1:PnvE6IYm6XAA4F5pNxFJqnBVGZkkorggVuLSCEuCKFQ=
 github.com/pmezard/go-difflib v1.0.0/go.mod h1:iKH77koFhYxTK1pcRnkKkqfTogsbg7gZNVY4sRDYZ/4=
