@@ -1,7 +1,8 @@
-package auth_models
+package authmodels
 
 import (
 	"github.com/krishak-fiem/db/go/cassandra"
+	"github.com/scylladb/gocqlx/v2"
 	"github.com/scylladb/gocqlx/v2/table"
 	"log"
 )
@@ -11,12 +12,14 @@ type User struct {
 	Password string `json:"password"`
 }
 
-const tableName = "User"
+const tableName = "public.users"
 
 var UserTable table.Table
+var Session gocqlx.Session
 
 func init() {
-	err := cassandra.Session.ExecStmt(`CREATE TABLE IF NOT EXISTS public.users (
+	session := cassandra.Init(9042)
+	err := session.ExecStmt(`CREATE TABLE IF NOT EXISTS public.users (
 		email text PRIMARY KEY,
 		password text,
 	)`)
@@ -25,14 +28,15 @@ func init() {
 		log.Fatalf(err.Error())
 	}
 
-	userMetadata := cassandra.CreateMetadata(tableName, []string{"email", "password"}, []string{"email"}, []string{""})
+	userMetadata := cassandra.CreateMetadata(tableName, []string{"email", "password"}, []string{"email"})
 	userTable := cassandra.CreateTable(userMetadata)
 
 	UserTable = *userTable
+	Session = session
 }
 
 func (u *User) CreateUser() error {
-	err := cassandra.InsertRow(UserTable, &u)
+	err := cassandra.InsertRow(Session, UserTable, u)
 	if err != nil {
 		return nil
 	}
@@ -40,7 +44,7 @@ func (u *User) CreateUser() error {
 }
 
 func (u *User) GetUser() error {
-	err := cassandra.GetRow(UserTable, &u)
+	err := cassandra.GetRow(Session, UserTable, u)
 	if err != nil {
 		return nil
 	}
